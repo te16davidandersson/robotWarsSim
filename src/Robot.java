@@ -1,8 +1,12 @@
-public abstract class Robot {
+public abstract class Robot extends Coordinate {
     private Coordinate coordinate;
     private int fuelBar = 10;
     private char repres;
     private boolean lowBar = false;
+
+    public Robot(int x, int y, char repres) {
+        super(x, y, repres);
+    }
 
     public Coordinate getCoordinate() {
         return coordinate;

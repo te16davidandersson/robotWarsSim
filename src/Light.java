@@ -1,20 +1,8 @@
-public class Light {
+public class Light extends Coordinate {
     private Coordinate coordinate;
     private char repres;
 
-    public Coordinate getCoordinate() {
-        return coordinate;
-    }
-
-    public void setCoordinate(Coordinate coordinate) {
-        this.coordinate = coordinate;
-    }
-
-    public char getRepres() {
-        return repres;
-    }
-
-    public void setRepres(char repres) {
-        this.repres = repres;
+    public Light(int x, int y, char repres) {
+        super(x,y,repres);
     }
 }

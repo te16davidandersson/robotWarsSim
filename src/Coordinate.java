@@ -2,6 +2,30 @@ public class Coordinate {
     private int x;
     private int y;
 
+    private Coordinate coordinate;
+    private char repres;
+
+    public Coordinate(int x, int y, char repres) {
+
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public char getRepres() {
+        return repres;
+    }
+
+    public void setRepres(char repres) {
+        this.repres = repres;
+    }
+
     public int getX() {
         return x;
     }
