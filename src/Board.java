@@ -8,6 +8,8 @@ public class Board {
     private List robots;
     private char[] board;
 
+
+
     public int getWidth() {
         return width;
     }
@@ -69,6 +71,11 @@ public class Board {
 
     public static void main(String[] args) {
         Board b = new Board();
+        Fuel fuel = new Fuel(2,2,'F');
+        fuel.setCoordinate((int)Math.floor(Math.random()*8) + 1,(int)(Math.floor(Math.random()*8))+ 1);
+        fuel.setRepres('F');
+        b.getBoard()[fuel.getX() + fuel.getY()*b.getWidth()] = fuel.getRepres();
+
         for(int i = 0; i<b.getHeight(); i++){
             String out = "";
             for(int k = 0; k<b.getWidth(); k++){
@@ -76,6 +83,5 @@ public class Board {
             }
             System.out.println(out);
         }
-
     }
 }
