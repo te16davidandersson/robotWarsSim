@@ -1,8 +1,6 @@
-public class Light extends Coordinate {
-    private Coordinate coordinate;
-    private char repres;
+public class Light extends Entity {
 
-    public Light(int x, int y, char repres) {
-        super(x,y,repres);
+    public Light(int x, int y) {
+        super(x,y,'S');
     }
 }

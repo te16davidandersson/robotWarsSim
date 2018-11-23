@@ -1,63 +1,35 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-    private int width = 10;
-    private int height = 10;
-    private List lights;
-    private List fuel;
-    private List robots;
+    private final static int WIDTH = 10;
+    private final static int HEIGHT = 10;
+    private List<Light> lights;
+    private List<Fuel> fuel;
+    private List<Robot> robots;
     private char[] board;
 
-
-
-    public int getWidth() {
-        return width;
+    public Board(){
+        this.createBoard();
+        this.lights = new ArrayList<>();
+        this.fuel = new ArrayList<>();
+        this.robots = new ArrayList<>();
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public void printBoard() {
+        for(int i = 0; i<HEIGHT; i++){
+            String out = "";
+            for(int k = 0; k<WIDTH; k++){
+                out = out + board[k+i*WIDTH] + " ";
+            }
+            System.out.println(out);
+        }
     }
 
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public List getLights() {
-        return lights;
-    }
-
-    public void setLights(List lights) {
-        this.lights = lights;
-    }
-
-    public List getFuel() {
-        return fuel;
-    }
-
-    public void setFuel(List fuel) {
-        this.fuel = fuel;
-    }
-
-    public List getRobots() {
-        return robots;
-    }
-
-    public void setRobots(List robots) {
-        this.robots = robots;
-    }
-
-    public char[] getBoard(){
-        return board;
-    }
-
-    public void board() {
-        board = new char[width*height];
-         for(int i = 0; i<(height*width); i++){
-            if (i % width == 0 || i % width + 1 == width || i / height == 0 || i / height + 1 == height) {
+    public void createBoard() {
+        board = new char[WIDTH*HEIGHT];
+         for(int i = 0; i<(WIDTH*HEIGHT); i++){
+            if (i % WIDTH == 0 || i % WIDTH + 1 == WIDTH || i / HEIGHT == 0 || i / HEIGHT + 1 == HEIGHT) {
                 this.board[i] = 'X';
             } else {
                 this.board[i] = ' ';
@@ -65,23 +37,9 @@ public class Board {
         }
     }
 
-    public Board(){
-        this.board();
-    }
-
-    public static void main(String[] args) {
-        Board b = new Board();
-        Fuel fuel = new Fuel(2,2,'F');
-        fuel.setCoordinate((int)Math.floor(Math.random()*8) + 1,(int)(Math.floor(Math.random()*8))+ 1);
-        fuel.setRepres('F');
-        b.getBoard()[fuel.getX() + fuel.getY()*b.getWidth()] = fuel.getRepres();
-
-        for(int i = 0; i<b.getHeight(); i++){
-            String out = "";
-            for(int k = 0; k<b.getWidth(); k++){
-                out = out + b.getBoard()[k+i*b.getWidth()] + " ";
-            }
-            System.out.println(out);
-        }
+    public void createFuel(int x, int y) {
+        Fuel fuel = new Fuel(x, y);
+        this.fuel.add(fuel);
+        board[x + y*WIDTH] = fuel.getRepres();
     }
 }

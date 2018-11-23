@@ -1,7 +1,7 @@
 public class RobotDark extends Robot {
 
-    public RobotDark(int x, int y, char repres) {
-        super(x, y, repres);
+    public RobotDark(int x, int y) {
+        super(x, y, 'D');
     }
 
     @Override
